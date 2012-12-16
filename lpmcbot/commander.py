@@ -5,6 +5,7 @@ from twisted.internet import protocol, reactor
 
 class Commander(irc.IRCClient):
 
+    # Our commands will be stored in this array
     commands = []
 
     @property
@@ -19,6 +20,8 @@ class Commander(irc.IRCClient):
         print "Joined %s." % (channel,)
 
     def privmsg(self, user, channel, msg):
+        """This function is called when a message is sent to the bot or to a
+        channel the bot is in"""
 
         print user, msg
 
@@ -28,10 +31,13 @@ class Commander(irc.IRCClient):
 
 
         directed = msg.startswith(self.nickname)
+        # This regex extracts the target of a message, and the message itself,
+        # where the target may not be there.
         target, msg = re.match(
             r'^(?:([a-z_\-\[\]\\^{}|`][a-z0-9_\-\[\]\\^{}|`]*)[:,] )? *(.*)$',
             msg).groups()
 
+        # Split a users nickname and irc mask
         user, mask = user.split('!', 1)
 
         comm = {
@@ -42,10 +48,14 @@ class Commander(irc.IRCClient):
             'channel': channel,
         }
 
+        # Go through each registered command and check if the command's regex
+        # matches anything in our message.
         for cmd in Commander.commands:
             match = cmd.regex.match(msg)
             if match and (directed or (not cmd.onlyDirected)):
+                # Store the captured values from a commands regex
                 comm.update({'groups': match.groups()})
+                # Pass all the values of comm to a command for use
                 cmd(self, comm)
 
     def connectionLost(self, reason):
@@ -64,7 +74,6 @@ class CommanderFactory(protocol.ClientFactory):
 
     def clientConnectionLost(self, connector, reason):
         print "Lost connection (%s). Reconnecting" % (reason,)
-        connector.connect()
 
     def clientConnectionFailed(self, connector, reason):
         print "Could not connect: %s" % (reason,)
