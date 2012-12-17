@@ -1,0 +1,10 @@
+#!/usr/bin/env python2
+
+
+# A simple python dictionary to store the bots basic configuration settings
+CONFIG = {
+    'nickname': 'lpmcbot',
+    'server': 'irc.freenode.net',
+    'channel': '#lpmcbot',
+    'port': '6667',
+}
