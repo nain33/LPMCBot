@@ -36,5 +36,5 @@ if __name__ == '__main__':
     except KeyError:
         port = 6667
 
-    reactor.connectTCP(server, port, CommanderFactory('#' + chan, nickname))
+    reactor.connectTCP(server, port, CommanderFactory(chan, nickname))
     reactor.run()
