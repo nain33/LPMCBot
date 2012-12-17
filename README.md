@@ -33,7 +33,7 @@ if you do not already have it, it should be easily available through most
 package managers.
 
 For those that want to install dependencies inside the project instead of 
-globally, you will need to install virtualenv(http://pypi.python.org/pypi/virtualenv)
+globally, you will need to install [virtualenv](http://pypi.python.org/pypi/virtualenv)
 
 ###Installation
 After you have cloned/forked the repo, issue the following commands.
