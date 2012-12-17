@@ -35,11 +35,11 @@ package managers.
 ###Installation
 After forking/cloning the repo.
 
-'''
+```
 cd LPMCBot/
 pip install -r requirements.txt
 python main.py
-'''
+```
 
 
 
