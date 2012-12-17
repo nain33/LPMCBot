@@ -33,14 +33,17 @@ if you do not already have it, it should be easily available through most
 package managers.
 
 ###Installation
-After forking/cloning the repo.
+After you have cloned/forked the repo, issue the following commands.
 
 ```
 cd LPMCBot/
 pip install -r requirements.txt
+cp config.py.dist config.py
 python main.py
 ```
-
+Tweak the settings in your config file as necessary. If you wish to add
+additional configuration settings for a feature, simply add the field in
+config.py.dist for when you wish to have the changes merged in.
 
 
 How to Contribute

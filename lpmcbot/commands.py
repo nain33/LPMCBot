@@ -4,6 +4,7 @@ from lpmcbot.commander import registerCommand
 
 
 class Command(object):
+    """The base command class. All commands should subclass this."""
 
     onlyDirected = True
     caseSensitive = False
