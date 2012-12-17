@@ -9,7 +9,7 @@ from lpmcbot.commander import CommanderFactory
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        chan = sys.argv
+        chan = sys.argv[1]
     else:
         chan = 'lpmcbot'
 
