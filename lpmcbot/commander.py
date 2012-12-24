@@ -37,6 +37,12 @@ class Commander(irc.IRCClient):
             r'^(?:([a-z_\-\[\]\\^{}|`][a-z0-9_\-\[\]\\^{}|`]*)[:,] )? *(.*)$',
             msg).groups()
 
+        # Allow messages beginning with ! to set directed to true.
+        # Useful for commands like !math 1+2
+        if msg.startswith('!'):
+            msg = msg[1:]
+            directed = True
+
         # Split a users nickname and irc mask
         user, mask = user.split('!', 1)
 
