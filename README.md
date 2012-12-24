@@ -32,16 +32,37 @@ Set up for LPMCBot is fairly easy. The only dependencies are Python 2.7+ and
 if you do not already have it, it should be easily available through most
 package managers.
 
+For those that want to install dependencies inside the project instead of 
+globally, you will need to install [virtualenv](http://pypi.python.org/pypi/virtualenv)
+
 ###Installation
 After you have cloned/forked the repo, issue the following commands.
 
+####Global install
 ```
 cd LPMCBot/
 pip install -r requirements.txt
 cp config.py.dist config.py
 python main.py
 ```
-Tweak the settings in your config file as necessary. If you wish to add
+####Local install with virtualenv
+```
+cd LPMCBot/
+virtualenv venv --distribute
+source venv/bin/activate
+pip install -r requirements.txt
+cp config.py.dist config.py
+python main.py
+```
+####Command line arguments at startup
+LPMCBot also supports passing the channel and nick at startup which overrides the
+default config file settings. For instance, to start the bot in channel #Test 
+with nick TestBot, you would type
+```
+python main.py '#Test' 'Testbot'
+```
+ 
+You can tweak the settings in your config file as necessary. If you wish to add
 additional configuration settings for a feature, simply add the field in
 config.py.dist for when you wish to have the changes merged in.
 
