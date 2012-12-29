@@ -5,7 +5,13 @@ from twisted.internet import protocol, reactor
 
 from lpmcbot import commands
 from lpmcbot.commander import CommanderFactory
-from config import CONFIG
+
+try:
+    from config import CONFIG
+else ImportError:
+    print "Config file not found."
+    quit()
+
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
